@@ -1,5 +1,6 @@
 package com.github.fernandakaory.study_apix;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,22 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ControllerProduto {
     @PostMapping
-    public String create() {
-        return "Produto Cadastrado";
+    public ResponseEntity<String> create() {
+        return ResponseEntity.status(201).body("Produto Cadastrado");
     }
 
     @PutMapping
-    public String update() {
-        return "Produto Atualizado";
+    public ResponseEntity<String> update() {
+        return ResponseEntity.status(200).body("Produto Atualizado");
     }
 
     @GetMapping
-    public String find() {
-        return "abacaxi";
+    public ResponseEntity<String> find() {
+        return ResponseEntity.status(200).body("Amora");
     }
 
     @DeleteMapping
-    public void delete() {
-
+    public ResponseEntity<Void> delete() {
+        return ResponseEntity.status(204).build();
     }
 }
