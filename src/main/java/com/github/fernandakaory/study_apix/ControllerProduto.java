@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class ControllerProduto {
     @PostMapping
-    public ResponseEntity<String> create() {
+    public ResponseEntity<String> create(Produto produto) {
         return ResponseEntity.status(201).body("Produto Cadastrado");
     }
 
@@ -27,7 +27,7 @@ public class ControllerProduto {
 
     @GetMapping
     public ResponseEntity<String> find() {
-        return ResponseEntity.status(200).body("Amora");
+        return ResponseEntity.status(200).body("Morango");
     }
 
     @DeleteMapping
