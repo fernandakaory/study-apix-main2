@@ -1,4 +1,4 @@
-package com.github.fernandakaory.study_apix;
+package com.github.fernandakaory.study_apix.controller;
 //mvn spring-boot:run
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

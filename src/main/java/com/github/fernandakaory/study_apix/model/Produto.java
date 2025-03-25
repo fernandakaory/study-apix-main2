@@ -1,4 +1,4 @@
-package com.github.fernandakaory.study_apix;
+package com.github.fernandakaory.study_apix.model;
 
 
 public class Produto {
