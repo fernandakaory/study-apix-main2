@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.fernandakaory.study_apix.dto.ProdutoRequestCreate;
 import com.github.fernandakaory.study_apix.model.Produto;
 import com.github.fernandakaory.study_apix.service.ProdutoService;
 
@@ -24,9 +25,9 @@ public class ControllerProduto {
     private ProdutoService produtoService = new ProdutoService();
 
     @PostMapping
-    public ResponseEntity<Produto> create(@RequestBody Produto request) {
+    public ResponseEntity<Produto> create(@RequestBody ProdutoRequestCreate dto) {
 
-        Produto produto = produtoService.save(request);
+        Produto produto = produtoService.save(dto);
 
         return ResponseEntity.status(201).body(produto);
     }
