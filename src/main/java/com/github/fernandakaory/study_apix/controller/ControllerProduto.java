@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.fernandakaory.study_apix.dto.ProdutoRequestCreate;
+import com.github.fernandakaory.study_apix.dto.ProdutoRequestUpdate;
+import com.github.fernandakaory.study_apix.dto.ProdutoResponse;
 import com.github.fernandakaory.study_apix.model.Produto;
 import com.github.fernandakaory.study_apix.service.ProdutoService;
 
@@ -36,11 +38,22 @@ public class ControllerProduto {
         return ResponseEntity.status(201).body(produto);
     }
 
-    @PutMapping
-    public ResponseEntity<String> update() {
-        return ResponseEntity.status(200).body("Produto Atualizado");
+    @PutMapping("{id}")
+    public ResponseEntity<ProdutoResponse> update(
+            @PathVariable Long id,
+            @RequestBody ProdutoRequestUpdate dto) {
+        return produtoService.update(id, dto)
+            .map(produto -> {
+                ProdutoResponse response = new ProdutoResponse();
+                response.setId(produto.getId());
+                response.setNome(produto.getNome());
+                return response;
+    
+        })
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
-
+    
     @GetMapping
     public ResponseEntity<List<Produto>> findAll() {
         List<Produto> produtos = produtoService.findAll();

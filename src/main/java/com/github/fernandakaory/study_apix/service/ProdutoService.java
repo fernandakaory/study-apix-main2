@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.fernandakaory.study_apix.dto.ProdutoRequestCreate;
+import com.github.fernandakaory.study_apix.dto.ProdutoRequestUpdate;
 import com.github.fernandakaory.study_apix.model.Produto;
 import com.github.fernandakaory.study_apix.repository.ProdutoRepository;
 
@@ -16,6 +17,15 @@ public class ProdutoService {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    public Optional<Produto> update(Long id,
+                                    ProdutoRequestUpdate dto) {
+        return produtoRepository.findById(id)
+                    .map(produto -> {
+                        produto.setNome(dto.getNome());
+                        return produtoRepository.save(produto);
+                    });
+    }
 
     public Produto save(ProdutoRequestCreate dto) {
         Produto produto = new Produto();

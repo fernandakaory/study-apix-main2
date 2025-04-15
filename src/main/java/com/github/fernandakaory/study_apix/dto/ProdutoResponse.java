@@ -1,15 +1,8 @@
-package com.github.fernandakaory.study_apix.model;
+package com.github.fernandakaory.study_apix.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-@Entity
-public class Produto {
-    @Id
-    @GeneratedValue
+public class ProdutoResponse {
     private Long id;
     private String nome;
-   
     
     public Long getId() {
         return id;
@@ -23,6 +16,6 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
+    
     
 }
